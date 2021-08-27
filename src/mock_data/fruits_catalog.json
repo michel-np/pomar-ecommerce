@@ -1,0 +1,33 @@
+[
+    {
+        "id":1,
+        "name":"Maçã",
+        "unitPrice":2.00,
+        "pictureUrl":"https://feiradoceasa.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/m/a/maca03_1_1.jpg"
+
+    },
+    {
+        "id":2,
+        "name":"Pêra",
+        "unitPrice":3.50,
+        "pictureUrl":"https://hiperideal.vteximg.com.br/arquivos/ids/167745-1000-1000/80764.jpg?v=636615816415070000"
+    },
+    {
+        "id":3,
+        "name":"Banana",
+        "unitPrice":2.99,
+        "pictureUrl":"https://octoshop.sfo2.digitaloceanspaces.com/lojas/padellasaobenedito/uploads_produto/banana-naninca-5e97330681eef.jpg"
+    },
+    {
+        "id":4,
+        "name":"Abacaxi",
+        "unitPrice":5.00,
+        "pictureUrl":"https://cd.shoppub.com.br/cenourao/media/cache/7d/dc/7ddcf04db9666b50ce4a4d43c23177eb.png"
+    },
+    {
+        "id":5,
+        "name":"Manga",
+        "unitPrice":4.90,
+        "pictureUrl":"https://www.orquidario4e.com.br/Content/images/product/fruta00082_1_m_d_00.jpg"
+    }
+]
