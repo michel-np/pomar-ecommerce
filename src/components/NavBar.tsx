@@ -12,7 +12,7 @@ export interface NavbarProps {
 
 const NavBar = ({className, noHeader}: NavbarProps) => {
     const history = useHistory()
-    const {user} = useContext(AuthContext)
+    const {user, logout} = useContext(AuthContext)
 
 
     return (
@@ -20,9 +20,13 @@ const NavBar = ({className, noHeader}: NavbarProps) => {
             <span onClick={() => history.push('/')} className="store-name">Pomar Framework</span>
             {!noHeader && <div>
                 <SearchBar/>
+                <Link to="/shopping-cart">Carrinho</Link>
                 {user
                     ?
+                        <>
                         <div>{`Olá, ${user?.name}`}</div> 
+                        <button onClick={() => logout()}>Logout</button>
+                        </>
                     :
                     <Link to="/login">LOGIN</Link>
 

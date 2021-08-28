@@ -3,17 +3,17 @@ import NavBar from './NavBar'
 import styled from 'styled-components'
 
 type PageProps = {
-    component: JSX.Element
+    component: React.FC
     className?:string
     noHeader?:boolean
 }
 
 
-const Page  = ({component, className,noHeader}:PageProps) => {
+const Page  = ({component: Component, className,noHeader}:PageProps) => {
     return <>
         <NavBar noHeader={noHeader}/>
         <div className={className}>
-            {component}          
+            <Component />
         </div>
     </>
 }

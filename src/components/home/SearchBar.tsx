@@ -16,6 +16,7 @@ const SearchBar = ({className}: Props) => {
 
     const handleSearch = (event:SyntheticEvent) =>{
         event.preventDefault()
+        if (!search) return
         history.push(`/?search=${search}`,)
     }
 
@@ -50,7 +51,8 @@ export default styled(SearchBar)`
         }
             button{
                 border:0;
-                background-color:rgba(0,0,0,0)
+                background-color:rgba(0,0,0,0);
+                color:white;
         }
     }
 

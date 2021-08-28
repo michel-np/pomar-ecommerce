@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import styled from 'styled-components';
 import {fetchFruits} from '../../providers/fruitsList'
 import {useLocation} from 'react-router-dom'
 import FruitCard from './FruitCard'
 import {Fruit} from '../../types'
+import {useHistory} from 'react-router-dom'
 
 interface Props {
     className?:string
@@ -13,12 +14,12 @@ interface Props {
 const Home = ({className}: Props) => {
     const [fruits, setFruits] = useState<Fruit[]>([])
     const location = useLocation()
-
+    const history = useHistory()
     const query = new URLSearchParams(location.search)
     const search  = query.get("search")
 
 
-    const fetchAllFruits = async () => {
+    const fetchAllFruits = useCallback(async () => {
         await fetchFruits()
         .then((response) => {
             if (search?.length){
@@ -29,16 +30,17 @@ const Home = ({className}: Props) => {
             }
             setFruits(response)
         }).catch(err => console.error(err))
-    }
+    },[search])
 
     useEffect(() => {
         fetchAllFruits()
-    },[search])
+    },[search, fetchAllFruits])
 
     return <>
         <main className={className}>
             {fruits && fruits.map(fruit => (
                 <FruitCard
+                    key={fruit.id}
                     id={fruit.id}
                     name={fruit.name}
                     unitPrice={fruit.unitPrice}
