@@ -48,6 +48,12 @@ const ShoppingCart = ({className}: Props) => {
                         onRemoveItem={handleItemRemoval}
                     />
                 ))} 
+                <button 
+                    disabled={shoppingCart.length === 0} 
+                    onClick={emptyCart} className="empty-cart-button"
+                    >
+                        {shoppingCart.length === 0 ?'CARRINHO VAZIO' : 'ESVAZIAR CARRINHO'}
+                </button>
             </div>
         
             <div className="summary-container">
@@ -63,29 +69,39 @@ export default styled(ShoppingCart)`
     width:70%;
     display:flex;
     flex-direction:column;
+    button {
+        border:0;
+        background-color:#7531eb;
+        color: white;   
+        border-radius:5px;
+        &:hover {
+            text-decoration:underline;
+        }
+        &:disabled {
+            opacity:0.5
+        }
+    }
     main {  
         display:flex;
         justify-content:space-between;
         .shopping-cart-item-container {
             width:80%;
+            .empty-cart-button {
+                height:35px;
+                width:30%;
+                font-size:14pt
+            }
         
         }
         .summary-container {
             width:30%;
     
-            .checkout-button {
-                border:0;
-                background-color:#7531eb;
+            .checkout-button {                
                 margin-top:50px;
                 width:100%; 
                 height:50px;
                 font-size:15pt;
-                border-radius:5px;
-                color: white;   
-                font-weight:700;  
-                &:hover {
-                    text-decoration:underline;
-                }
+                font-weight:700;                  
             }
             
         }

@@ -23,7 +23,7 @@ const Button = styled.button`
     }
     &:disabled {
         opacity:.5
-    }
+    }    
     
 
 `

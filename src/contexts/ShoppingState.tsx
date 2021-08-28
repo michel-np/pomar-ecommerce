@@ -38,6 +38,11 @@ const reducer = (state: IShoppingState, action: ShoppingCartAction):IShoppingSta
                 ...state,
                 shoppingCart: action.payload
             }
+        case 'EMPTY_SHOPPING_CART':
+            return {
+                ...state,
+                shoppingCart:[]
+            }
             
 
         default:
@@ -80,7 +85,7 @@ const ShoppingCartState = ({children}:ShoppingStateCartProps) => {
     )
 
     const emptyCart = useCallback(() => new Promise<void>((resolve, reject) =>{
-        
+        dispatch({type:'EMPTY_SHOPPING_CART'})
     }),[])
 
     
