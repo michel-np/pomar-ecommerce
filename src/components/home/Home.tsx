@@ -24,7 +24,8 @@ const Home = ({className}: Props) => {
         .then((response) => {
             if (search?.length){
                 const fruits = response.filter(fruit => 
-                    fruit?.name.toLowerCase().includes(search.toLowerCase())
+                    fruit?.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                    .includes(search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
                 )
                 return setFruits(fruits)
             }
