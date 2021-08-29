@@ -22,7 +22,7 @@ const SearchBar = ({className}: Props) => {
 
     return <div className={className}>
        <form onSubmit={handleSearch}>
-            <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+            <input type="text" value={search} placeholder="Pesquise por frutas..." onChange={(e)=>setSearch(e.target.value)}/>
             <button>
                 <img onClick={handleSearch} src={SearchIcon} alt="magnifying-glass"/>
             </button>
@@ -47,6 +47,9 @@ export default styled(SearchBar)`
             color:white;
             &:focus {
                 outline:none;
+            }
+            &::placeholder {
+                color:#ddd;
             }
         }
             button{

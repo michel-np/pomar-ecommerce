@@ -2,7 +2,7 @@ import React, {useCallback, useContext, useEffect, useState} from 'react'
 import styled from 'styled-components'
 import { ShoppingContext } from '../../contexts/ShoppingState'
 import {ShoppingCart} from '../../types'
-import {formatPrice} from '../../utils'
+import {formatPrice, sumCartPrices} from '../../utils'
 
 type Props = {
     className?:string
@@ -14,10 +14,7 @@ const SummaryContainer = ({className, shoppingCart}:Props) => {
     const newCart = [...shoppingCart]    
     
     const getTotalValue = useCallback((): void => {
-        const priceSum = newCart.reduce((acc, current)=>{
-            acc = (current.amount * current.fruit.unitPrice) + acc
-            return acc
-        },0)
+        const priceSum =sumCartPrices(newCart)
         setCheckoutPrice(priceSum)
     },[newCart])
     
@@ -29,9 +26,9 @@ const SummaryContainer = ({className, shoppingCart}:Props) => {
 
     return (
         <div className={className}>
-            <h1>Resumo</h1>
+            <h1>Total</h1>
             <hr/>
-            {checkoutPrice && <h2>{formatPrice(checkoutPrice)}</h2>}
+            <h2>{checkoutPrice ? formatPrice(checkoutPrice) : "R$ 0,00"}</h2>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import {AuthContext} from '../../contexts/AuthState'
 import {ShoppingContext} from '../../contexts/ShoppingState'
 import ShoppingCartItem from './ShoppingCartItem'
 import SummaryContainer from './SummaryContainer'
-
+import {Link} from 'react-router-dom'
 interface Props {
     className?:string
 }
@@ -48,17 +48,29 @@ const ShoppingCart = ({className}: Props) => {
                         onRemoveItem={handleItemRemoval}
                     />
                 ))} 
+
+                {shoppingCart.length > 0 
+                ?
                 <button 
                     disabled={shoppingCart.length === 0} 
                     onClick={emptyCart} className="empty-cart-button"
                     >
-                        {shoppingCart.length === 0 ?'CARRINHO VAZIO' : 'ESVAZIAR CARRINHO'}
+                        ESVAZIAR CARRINHO
                 </button>
+                 :
+                 null}
+                
             </div>
         
             <div className="summary-container">
                 <SummaryContainer shoppingCart={shoppingCart}/>
-                <button className="checkout-button" >FINALIZAR COMPRA</button>
+                <button disabled={shoppingCart.length === 0} className="checkout-button" >
+                    {shoppingCart.length > 0 ? <Link to="/purchase-success"> 
+                    
+                        FINALIZAR COMPRA
+                    </Link>
+                :"CARRINHO VAZIO"}
+                </button>
             </div>        
         </main>
     </div>
@@ -101,7 +113,14 @@ export default styled(ShoppingCart)`
                 width:100%; 
                 height:50px;
                 font-size:15pt;
-                font-weight:700;                  
+                font-weight:700; 
+                a {
+                    color:white;
+                    text-decoration:none
+                }
+                &:hover {
+                    text-decoration:underline;
+                }
             }
             
         }

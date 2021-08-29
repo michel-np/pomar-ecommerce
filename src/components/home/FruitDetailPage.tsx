@@ -76,8 +76,7 @@ export default styled(FruitDetailPage)`
     display:flex;        
     .picture-section {
         display:flex;
-        justify-content:center;
-        background-color:pink;        
+        justify-content:center;    
         width:60%;
         img {       
             max-width:100%;                 

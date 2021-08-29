@@ -10,6 +10,7 @@ import Login from './components/auth/Login';
 import ShoppingCart from './components/shopping-cart/ShoppingCart';
 import FruitDetailPage from './components/home/FruitDetailPage'
 import GlobalStyle from './globalStyles';
+import PurchaseSuccess from './components/shopping-cart/PurchaseSuccess'
 
 
 const App = () => {
@@ -18,7 +19,8 @@ const App = () => {
       <ShoppingCartState>      
       <Router>
         <GlobalStyle/>
-        <Switch>       
+        <Switch>     
+          <PrivateRoute path="/purchase-success" component={PurchaseSuccess} />  
           <Route path="/shopping-cart">
             <Page component={ShoppingCart}/>
           </Route>

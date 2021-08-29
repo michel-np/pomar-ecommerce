@@ -1,38 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
-import {formatPrice} from '../../utils'
+import { Link } from 'react-router-dom'
+import { formatPrice } from '../../utils'
 
 
 interface Props {
-    className?:string;
-    id:number;
-    name:string;
-    pictureUrl:string;
-    unitPrice:number;    
+    className?: string;
+    id: number;
+    name: string;
+    pictureUrl: string;
+    unitPrice: number;
 }
 
 
 
-const ProductCard = ({className, id, name, pictureUrl, unitPrice}: Props) => {
+const ProductCard = ({ className, id, name, pictureUrl, unitPrice }: Props) => {
 
-    
+
 
     return (
-      
-            <div className={className}>
-                <Link to={`/${id}`}>                 
+
+        <div className={className}>
+            <Link to={`/${id}`}>
                 <div className="thumbnail">
                     <img src={pictureUrl} alt={`foto de ${name}`} />
                 </div>
+                <hr/>
                 <div className="info">
-                    <h3>{name}</h3>
+                    <h3 >{name}</h3>
                     <span>{formatPrice(unitPrice)}</span>
                 </div>
 
-                </Link>
-            </div>
-   
+            </Link>
+        </div>
+
     )
 }
 
@@ -43,6 +44,10 @@ export default styled(ProductCard)`
     background-color:white;    
     border-radius:5px;
     justify-content:center;
+    padding:5% 0;
+    a{
+        text-decoration:none;
+    }
     .thumbnail {
         display:flex;
         justify-content:center;
@@ -52,6 +57,9 @@ export default styled(ProductCard)`
             width:80%;
             height:auto;            
         }
+    }
+    hr {
+        width:70%;
     }
     .info{
        margin:2% 10%;

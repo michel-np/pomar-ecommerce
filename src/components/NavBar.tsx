@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { AuthContext } from '../contexts/AuthState'
 import SearchBar from './home/SearchBar';
 import { useHistory } from 'react-router';
+import {faShoppingCart, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 export interface NavbarProps {  
     className?:string      
@@ -20,12 +22,16 @@ const NavBar = ({className, noHeader}: NavbarProps) => {
             <span onClick={() => history.push('/')} className="store-name">Pomar Framework</span>
             {!noHeader && <div>
                 <SearchBar/>
-                <Link to="/shopping-cart">Carrinho</Link>
+                <Link to="/shopping-cart">
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                </Link>
                 {user
                     ?
                         <>
-                        <div>{`Olá, ${user?.name}`}</div> 
-                        <button onClick={() => logout()}>Logout</button>
+                        <div style={{color:'#ddd', fontSize:'12pt' }}>{`${user?.name}`}</div> 
+                        <button className="sign-out-button" onClick={() => logout()}>
+                            <FontAwesomeIcon icon={faSignOutAlt}/>
+                        </button>
                         </>
                     :
                     <Link to="/login">LOGIN</Link>
@@ -59,10 +65,14 @@ export default styled(NavBar)`
             color:#ddd;            
             font-size:1.5em;
             text-decoration:none;
-        }
-        
-        
-        
+        }                    
+    }
+    .sign-out-button {
+        border:0;
+        background:none;
+        color:#ddd;
+        font-size:20pt;
+
     }
     
 

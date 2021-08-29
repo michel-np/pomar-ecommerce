@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import {Route, RouteProps, Redirect} from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthState'
 import {getUser} from '../utils'
+import Page from '../components/Page'
 
 interface PrivateRouteProps extends RouteProps {
     component: React.FC;
@@ -14,7 +15,8 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({component: Component,...prop
     console.log(user)       
         
     return <Route render={props =>(
-        user ? <Component /> : <Redirect to="/login" />
+        user ?
+        <Page component={Component} /> : <Redirect to="/login" />
     )} />
     
     // return <>
