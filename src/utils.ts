@@ -3,7 +3,6 @@ import { ShoppingCart } from "./types"
 
 export const getUser = () => {
     const userData: string | null = localStorage.getItem('user')
-    console.log('GetUser', userData)
     if (userData) {
         return JSON.parse(userData)
     }

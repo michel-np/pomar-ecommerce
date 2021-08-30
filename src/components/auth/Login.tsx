@@ -31,7 +31,6 @@ const Login = ({className}: Props) => {
         setPassWord(e.target.value)
     }
     const handleLogin = async (e:SyntheticEvent) => {
-        console.log(username, password)
         e.preventDefault()
         await login(username, password)
             .then(() => history.push('/'))

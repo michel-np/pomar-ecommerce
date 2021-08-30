@@ -12,28 +12,11 @@ interface PrivateRouteProps extends RouteProps {
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({component: Component,...props}) => {
     const user = getUser()
-    console.log(user)       
         
     return <Route render={props =>(
         user ?
         <Page component={Component} /> : <Redirect to="/login" />
     )} />
-    
-    // return <>
-    // <Route {...props} render={props => (
-    //     user ? <Component/> : <Redirect to="/login"/>
-    // )}/>
-        {/* {user ? 
-            <Component />
-        :    
-        <Redirect to="login" />
-    }
-    </Route> */}
-    {/* {user 
-        ? <Route {...props}/>
-        : <Redirect to="/login"/>
-    } */}
-    // </>
 }
 
 export default PrivateRoute

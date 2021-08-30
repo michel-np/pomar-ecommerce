@@ -19,9 +19,7 @@ const ShoppingCart = ({className}: Props) => {
     } = useContext(ShoppingContext)
 
      const handleItemRemoval = (itemId:number) => 
-        removeItemFromCart(itemId).then(() => {
-            console.log('it worked')
-        })
+        removeItemFromCart(itemId)
      const handleAmountIncrease = (itemId:number) => {
         increaseItemCount(itemId)
 
