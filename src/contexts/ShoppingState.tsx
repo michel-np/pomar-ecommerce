@@ -1,5 +1,9 @@
-import React, {createContext, ReactElement, useReducer, useCallback, useEffect} from 'react'
-import {Fruit, IShoppingCartItem,IShoppingState,ShoppingCart,ShoppingCartAction} from '../types'
+import React, {createContext, ReactElement, useReducer, useCallback} from 'react'
+import {
+    Fruit, 
+    IShoppingState,    
+    ShoppingCartAction
+} from '../types'
 
 
 type ShoppingStateCartProps =  {
@@ -84,8 +88,9 @@ const ShoppingCartState = ({children}:ShoppingStateCartProps) => {
         [state],
     )
 
-    const emptyCart = useCallback(() => new Promise<void>((resolve, reject) =>{
+    const emptyCart = useCallback(() => new Promise<void>((resolve) =>{
         dispatch({type:'EMPTY_SHOPPING_CART'})
+        resolve()
     }),[])
 
     

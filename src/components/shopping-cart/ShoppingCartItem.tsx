@@ -42,7 +42,7 @@ const ShoppingCartItem = ({cartItem,
                 </div>
             </div>
             <div className="trash-can">
-                    <FontAwesomeIcon onClick={() => onRemoveItem(cartItem.fruit.id)} color="#7531eb" icon={faTrash}/>
+                    <FontAwesomeIcon onClick={() => onRemoveItem(cartItem.fruit.id)} size="2x" color="#7531eb" icon={faTrash}/>
             </div>
 
             
@@ -65,7 +65,7 @@ export default styled(ShoppingCartItem)`
     }
     display:flex;
     .item-info {      
-        flex-grow:2;
+        width:50%;
         align-items:center;
         gap:10px;
         img {
@@ -73,9 +73,9 @@ export default styled(ShoppingCartItem)`
         }
         max-width:90%;
     }
-    .amount-control {
-        flex-grow:2;
+    .amount-control {        
         gap:5px;
+
         
         .control {
             gap:10px;
@@ -86,7 +86,8 @@ export default styled(ShoppingCartItem)`
         }
     }
     .trash-can {
-        flex-grow:1
+        width:25%;
+        justify-content:center;
 
     }
 `

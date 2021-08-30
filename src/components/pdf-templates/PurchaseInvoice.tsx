@@ -1,11 +1,9 @@
-import React from 'react'
 import {
     Page,
     Text,
     View,
     Document,
     StyleSheet,
-    Image
 } from "@react-pdf/renderer";
 import { ShoppingCart } from '../../types';
 import { formatPrice ,sumCartPrices} from '../../utils'
@@ -19,7 +17,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         margin: 60
     },
-    title: { marginBottom: '25px' },
+    title: { 
+        marginBottom: '25px',
+        textDecoration:'underline'
+    },
     productView: {
         marginTop: 40
 

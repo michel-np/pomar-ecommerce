@@ -34,7 +34,7 @@ const NavBar = ({className, noHeader}: NavbarProps) => {
                         </button>
                         </>
                     :
-                    <Link to="/login">LOGIN</Link>
+                    <Link to="/login">Login</Link>
 
                 }
             </div>}
@@ -60,7 +60,7 @@ export default styled(NavBar)`
     div {
         display:flex;
         align-items:center;
-        gap:20px;
+        gap:40px;
         a, a:visited, span {
             color:#ddd;            
             font-size:1.5em;

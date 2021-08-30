@@ -57,13 +57,13 @@ const FruitDetailPage = ({className,...props}: Props) => {
         <div className={className}>
             {fruit && <>
                 <section className="picture-section">
-                <img src={fruit?.pictureUrl} alt={`foto de ${fruit?.name}`} />
-            </section>
-            <section className="fruit-info">
-                <h1>{fruit?.name}</h1>
-                <p>{formatPrice(fruit.unitPrice)}</p>     
-                <AddToCartButton disabled={alreadyInCart} onClick={handlePurchase} label="Comprar" />           
-            </section>
+                    <img src={fruit?.pictureUrl} alt={`foto de ${fruit?.name}`} />
+                </section>
+                <section className="fruit-info">
+                    <h1>{fruit?.name}</h1>                
+                    <p>{formatPrice(fruit.unitPrice)}</p>                
+                    <AddToCartButton disabled={alreadyInCart} onClick={handlePurchase} label="Comprar" />           
+                </section>
         </>}
             
         </div>
@@ -73,16 +73,17 @@ const FruitDetailPage = ({className,...props}: Props) => {
 export default styled(FruitDetailPage)`
     width:70%;
     padding:5%;
-    display:flex;        
+    display:flex; 
+    flex-direction:row;      
     .picture-section {
         display:flex;
         justify-content:center;    
         width:60%;
         img {       
             max-width:100%;                 
-            
+            min-width:100px;
         }
-    }
+    }    
     .fruit-info {
         padding:50px;
         display:flex;
@@ -90,5 +91,14 @@ export default styled(FruitDetailPage)`
         justify-content:flex-start;
         background-color: #ece6f8;        
         width:40%;
+    }
+    @media (max-width:800px) {
+        flex-direction:column;
+        width:90%;
+        align-items:center;
+        gap: 80px;
+        .fruit-info {
+            width:70%
+        }
     }
 `

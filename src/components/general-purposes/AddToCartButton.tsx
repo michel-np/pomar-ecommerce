@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import AddToCartIcon from '../../assets/svgs/add-to-cart.svg'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 
 
 const Button = styled.button`
@@ -38,7 +40,9 @@ const AddToCartButton = ({label, onClick, disabled}:Props) => {
     return <>
         <Button disabled={disabled} onClick={onClick}>
             <span>{disabled ? 'Item já no carrinho' : label}</span>
-           {!disabled &&  <img src={AddToCartIcon} alt="button"/>}
+            {!disabled &&  
+                <FontAwesomeIcon icon={faShoppingCart} color="white" size="2x"/>
+            }
         
         </Button>
     </>

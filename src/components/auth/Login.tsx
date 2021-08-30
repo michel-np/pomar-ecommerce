@@ -1,4 +1,4 @@
-import React, {useState, useContext, SyntheticEvent, InputHTMLAttributes} from 'react'
+import React, {useState, useContext, SyntheticEvent} from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import {AuthContext} from '../../contexts/AuthState'
@@ -18,8 +18,7 @@ const Login = ({className}: Props) => {
     const history = useHistory()
     const search = new URLSearchParams(location.search)
     const {
-        login,
-        isLoggingIn,
+        login,        
         loginError
     } = useContext(AuthContext)
 
