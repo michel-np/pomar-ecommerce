@@ -53,7 +53,8 @@ const ShoppingCart = ({className}: Props) => {
                 ?
                 <button 
                     disabled={shoppingCart.length === 0} 
-                    onClick={emptyCart} className="empty-cart-button"
+                    onClick={emptyCart} 
+                    className="empty-cart-button"
                     >
                         ESVAZIAR CARRINHO
                 </button>
@@ -78,51 +79,71 @@ const ShoppingCart = ({className}: Props) => {
 }
 
 export default styled(ShoppingCart)`
-    width:70%;
-    display:flex;
-    flex-direction:column;
-    button {
-        border:0;
-        background-color:#7531eb;
-        color: white;   
-        border-radius:5px;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        button {
+        border: 0;
+        background-color: #7531eb;
+        color: white;
+        border-radius: 5px;
         &:hover {
-            text-decoration:underline;
+            text-decoration: underline;
         }
         &:disabled {
-            opacity:0.5
+            opacity: 0.5;
         }
-    }
-    main {  
-        display:flex;
-        justify-content:space-between;
+        }
+        main {
+        display: flex;
+        justify-content: space-between;
         .shopping-cart-item-container {
-            width:80%;
+            width: 80%;
             .empty-cart-button {
-                height:35px;
-                width:30%;
-                font-size:14pt
+            height: 35px;
+            width: 30%;
+            font-size: 14pt;
             }
-        
         }
         .summary-container {
-            width:30%;
-    
-            .checkout-button {                
-                margin-top:50px;
-                width:100%; 
-                height:50px;
-                font-size:15pt;
-                font-weight:700; 
-                a {
-                    color:white;
-                    text-decoration:none
-                }
-                &:hover {
-                    text-decoration:underline;
-                }
+            width: 30%;
+
+            .checkout-button {
+            margin-top: 50px;
+            width: 100%;
+            height: 50px;
+            font-size: 15pt;
+            font-weight: 700;
+            a {
+                color: white;
+                text-decoration: none;
             }
-            
+            &:hover {
+                text-decoration: underline;
+            }
+            }
+        }
+        }
+        @media (max-width: 1000px) {
+        align-items: center;
+        width: 100vw;
+        gap: 5%;
+        main {
+            padding: 5%;
+            width:90%;
+            flex-direction: column;
+            align-items: flex-start;
+            .shopping-cart-item-container {
+                width:90%;
+            .empty-cart-button {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            }
+            .summary-container {
+                width:80%;
+            }
+        }
         }
     }
     

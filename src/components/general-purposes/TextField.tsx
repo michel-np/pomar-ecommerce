@@ -29,6 +29,7 @@ export default styled(TextField)`
         border-radius:5px;        
         &:focus {
             outline:0;
+            box-shadow:0 0 10px purple;
             
         }
 
