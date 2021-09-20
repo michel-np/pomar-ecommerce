@@ -9,13 +9,17 @@ import Home from './components/home/Home';
 import Login from './components/auth/Login';
 import ShoppingCart from './components/shopping-cart/ShoppingCart';
 import FruitDetailPage from './components/home/FruitDetailPage'
-import GlobalStyle from './globalStyles';
+import GlobalStyle from './styles/globalStyles';
 import PurchaseSuccess from './components/shopping-cart/PurchaseSuccess'
+import { ThemeProvider } from 'styled-components';
+import theme from '../src/styles/theme';
+
 
 
 const App = () => {
   return (
-    <AuthState>
+    <ThemeProvider theme={theme}>
+      <AuthState>
       <ShoppingCartState>      
       <Router>
         <GlobalStyle/>
@@ -39,6 +43,7 @@ const App = () => {
       </Router>
       </ShoppingCartState>
    </AuthState>
+    </ThemeProvider>
   );
 }
 

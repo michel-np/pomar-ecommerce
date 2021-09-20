@@ -4,7 +4,8 @@ import {
     IShoppingState,    
     ShoppingCartAction
 } from '../types'
-
+import {useHistory} from 'react-router-dom'
+import { isTemplateExpression } from 'typescript'
 
 type ShoppingStateCartProps =  {
     children: Function | ReactElement
@@ -62,7 +63,7 @@ export const ShoppingContext = createContext(initialState)
 const ShoppingCartState = ({children}:ShoppingStateCartProps) => {
 
     const [state, dispatch] = useReducer(reducer, initialState)
-    
+    const history = useHistory()
    
     
     const addItemToCart = useCallback((fruit:Fruit) => new Promise<void>((resolve, reject) => {
@@ -83,6 +84,9 @@ const ShoppingCartState = ({children}:ShoppingStateCartProps) => {
             const {shoppingCart} = state;            
             const newShoppingCart = shoppingCart.filter(item => item.fruit.id !== id)
             dispatch({type:'REMOVE_ITEM_FROM_CART', payload:newShoppingCart})
+            if(state.shoppingCart.length === 0) {
+                history.push('/')
+            }
             resolve()
         }),
         [state],

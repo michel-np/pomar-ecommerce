@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
-import AddToCartIcon from '../../assets/svgs/add-to-cart.svg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 
 const Button = styled.button`
@@ -34,19 +34,29 @@ type Props = {
     label:string      
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     disabled:boolean
+    disabledLabel:string
+    icon?:IconDefinition
 }
 
-const AddToCartButton = ({label, onClick, disabled}:Props) => {
+const IconButton = ({label, onClick, disabled, disabledLabel, icon}:Props) => {
+
+    const renderIcon = ():ReactElement => {
+        if(!disabled && icon) {
+            return  <FontAwesomeIcon icon={icon} color="white" size="2x"/>
+        }
+        return <></>
+    }
+
     return <>
         <Button disabled={disabled} onClick={onClick}>
-            <span>{disabled ? 'Item já no carrinho' : label}</span>
-            {!disabled &&  
-                <FontAwesomeIcon icon={faShoppingCart} color="white" size="2x"/>
-            }
+            <span>
+                {disabled ? disabledLabel : label}
+                </span>
+            {renderIcon()}
         
         </Button>
     </>
 }
 
 
-export default AddToCartButton;
+export default IconButton;

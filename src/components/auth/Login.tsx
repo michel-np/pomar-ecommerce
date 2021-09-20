@@ -2,6 +2,7 @@ import React, {useState, useContext, SyntheticEvent} from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import {AuthContext} from '../../contexts/AuthState'
+import Button from '../general-purposes/Button'
 import TextField from '../general-purposes/TextField'
 
 
@@ -68,8 +69,10 @@ const Login = ({className}: Props) => {
                     type="password"
                     required
                 />                
-
-                <button type="submit">ENTRAR</button>
+                <Button type="submit">
+                    ENTRAR
+                </Button>
+                
 
             </form>
         </div>
@@ -77,7 +80,7 @@ const Login = ({className}: Props) => {
 }
 
 export default styled(Login)`
-    form{
+    form {
         width:70%;
         color:white;
         display:flex;

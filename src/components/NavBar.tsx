@@ -6,15 +6,18 @@ import SearchBar from './home/SearchBar';
 import { useHistory } from 'react-router';
 import {faShoppingCart, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { ShoppingContext } from '../contexts/ShoppingState';
 
 export interface NavbarProps {  
     className?:string      
     noHeader?:boolean
+    backgroundColor?: string
 }
 
-const NavBar = ({className, noHeader}: NavbarProps) => {
+const NavBar = ({className, noHeader, backgroundColor}: NavbarProps) => {
     const history = useHistory()
     const {user, logout} = useContext(AuthContext)
+    const {shoppingCart} = useContext(ShoppingContext);
 
 
     return (
@@ -22,9 +25,9 @@ const NavBar = ({className, noHeader}: NavbarProps) => {
             <span onClick={() => history.push('/')} className="store-name">Pomar Framework</span>
             {!noHeader && <div>
                 <SearchBar/>
-                <Link to="/shopping-cart">
+                {!!shoppingCart.length && <Link to="/shopping-cart">
                     <FontAwesomeIcon icon={faShoppingCart} />
-                </Link>
+                </Link>}
                 {user
                     ?
                         <>
@@ -45,7 +48,7 @@ const NavBar = ({className, noHeader}: NavbarProps) => {
 export default styled(NavBar)`
     width:90%;
     height:60px;
-    background-color: #7531eb;
+    background-color: ${props => props.backgroundColor || props.theme.main};
     position:sticky;
     top:0;
     display:flex; 

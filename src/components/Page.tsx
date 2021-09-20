@@ -4,14 +4,14 @@ import styled from 'styled-components'
 
 type PageProps = {
     component: React.FC
-    className?:string
-    noHeader?:boolean
+    className?: string
+    noHeader?: boolean
 }
 
 
-const Page  = ({component: Component, className,noHeader}:PageProps) => {
+const Page = ({ component: Component, className, noHeader }: PageProps) => {
     return <>
-        <NavBar noHeader={noHeader}/>
+        <NavBar noHeader={noHeader} />
         <div className={className}>
             <Component />
         </div>

@@ -1,9 +1,4 @@
-import React from 'react'
 import styled from 'styled-components'
-
-interface Props {
-    
-}
 
 const Button = styled.button`
     border-radius:5px;
@@ -13,17 +8,24 @@ const Button = styled.button`
     color:#ddd;
     min-width:160px;
     min-height:45px;
-    font-size:20pt;
-    background-color:#7531eb;
+    font-size:1em;
+    background-color:${({theme}) => theme.main};
+    &:active {
+                box-shadow:inset 3px 3px 2px gray;
+    }
     a {
         color:#ddd;
+        text-decoration:none;
         &:hover {
             text-decoration:underline;
         }
     }
     &:hover {
-            text-decoration:underline;
-        }
+        text-decoration:underline;
+    }
+    &:disabled {
+        opacity:0.5
+    }
 
 `
 

@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import {useHistory, useLocation, useParams} from 'react-router-dom';
 import {fetchFruitById} from '../../providers/fruitsList'
 import {Fruit} from '../../types'
-import AddToCartButton from '../../components/general-purposes/AddToCartButton'
 import {formatPrice} from '../../utils'
 import {ShoppingContext} from '../../contexts/ShoppingState'
+import IconButton from '../general-purposes/IconButton';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
 interface Props {
@@ -62,7 +63,13 @@ const FruitDetailPage = ({className,...props}: Props) => {
                 <section className="fruit-info">
                     <h1>{fruit?.name}</h1>                
                     <p>{formatPrice(fruit.unitPrice)}</p>                
-                    <AddToCartButton disabled={alreadyInCart} onClick={handlePurchase} label="Comprar" />           
+                    <IconButton 
+                        disabled={alreadyInCart} 
+                        onClick={handlePurchase} 
+                        label="Comprar"
+                        disabledLabel="Item já no carrinho"
+                        icon={faShoppingCart}
+                    />           
                 </section>
         </>}
             

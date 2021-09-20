@@ -9,7 +9,7 @@ type Props = {
     shoppingCart:ShoppingCart
 }
 
-const SummaryContainer = ({className, shoppingCart}:Props) => {
+const PurchaseSummary = ({className, shoppingCart}:Props) => {
     const [checkoutPrice, setCheckoutPrice] = useState(0)
     const newCart = [...shoppingCart]    
     
@@ -33,7 +33,7 @@ const SummaryContainer = ({className, shoppingCart}:Props) => {
     )
 }
 
-export default styled(SummaryContainer)`
+export default styled(PurchaseSummary)`
     background-color: #ece6f8;
     width:100%;
     border-radius:5px;    
